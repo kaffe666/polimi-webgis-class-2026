@@ -14,7 +14,7 @@ import { Style, Fill, Stroke } from 'ol/style';
 
 // OpenStreetMap base map
 let osm = new Tile({
-    title: "Open Street Map",
+    title: "OpenStreetMap",
     type: "base",
     visible: true,
     source: new OSM()
