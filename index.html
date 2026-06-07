@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Greece Air Quality | Home</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=2" />
 </head>
 
 <body>
@@ -13,6 +13,7 @@
       <a class="logo" href="index.html">AIR QUALITY IN GREECE · GROUP 05</a>
       <div class="nav-links">
         <a href="index.html" class="active">home</a>
+        <a href="workflow.html">workflow</a>
         <a href="results.html">results</a>
         <a href="webgis.html">webgis</a>
         <a href="https://github.com/sumumu-0107/webgis_group05" class="github-link" target="_blank" rel="noopener">GitHub</a>
@@ -33,7 +34,7 @@
       <p class="hero-kicker">Polimi GIS Lab 2025–26</p>
       <h1>GREECE</h1>
       <p class="hero-sub">
-        Spatial analysis of NO₂, PM2.5 and PM10 concentration across Greece using
+        Spatial analysis of NO₂, PM₂.₅ and PM₁₀ concentration across Greece using
         CAMS reanalysis data, land cover change detection and population exposure
         mapping, published as interactive GeoServer WMS layers.
       </p>
@@ -44,7 +45,7 @@
           <span class="top-line"></span>
           <span class="pollutant-icon" aria-hidden="true">
             <!-- Car / traffic exhaust: NO2 is mainly a traffic-related gas -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="#f0a44a" stroke-width="1.6"
+            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.6"
                  stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 13l1.6-4.2A2 2 0 0 1 6.5 7.5h7.8a2 2 0 0 1 1.8 1.1L18 13" />
               <path d="M2 13h16v3a1 1 0 0 1-1 1h-1" />
@@ -71,7 +72,7 @@
           <span class="top-line"></span>
           <span class="pollutant-icon" aria-hidden="true">
             <!-- Fine particles: small scattered dots, lungs-penetrating -->
-            <svg viewBox="0 0 24 24" fill="#2faa84" stroke="none">
+            <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.85)" stroke="none">
               <circle cx="6" cy="7" r="1.4" />
               <circle cx="12" cy="5" r="1" />
               <circle cx="18" cy="8" r="1.4" />
@@ -83,7 +84,7 @@
               <circle cx="20" cy="12" r="1.2" />
             </svg>
           </span>
-          <h2 class="pname">PM2.5</h2>
+          <h2 class="pname">PM₂.₅</h2>
           <p class="pfull">Fine Particulate Matter</p>
           <p class="card-meta">Particles ≤ 2.5 µm · 5 WMS layers</p>
           <span class="goto">
@@ -100,16 +101,16 @@
           <span class="top-line"></span>
           <span class="pollutant-icon" aria-hidden="true">
             <!-- Coarse dust: larger particles with motion lines (dust / resuspension) -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="#d65f68" stroke-width="1.6"
+            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.6"
                  stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="7" cy="8" r="2.4" fill="#d65f68" stroke="none" />
-              <circle cx="15" cy="11" r="3" fill="#d65f68" stroke="none" />
-              <circle cx="9" cy="15" r="1.8" fill="#d65f68" stroke="none" />
+              <circle cx="7" cy="8" r="2.4" fill="rgba(255,255,255,0.85)" stroke="none" />
+              <circle cx="15" cy="11" r="3" fill="rgba(255,255,255,0.85)" stroke="none" />
+              <circle cx="9" cy="15" r="1.8" fill="rgba(255,255,255,0.85)" stroke="none" />
               <path d="M2 6h5" /><path d="M2 12h4" /><path d="M2 18h6" />
               <path d="M19 7h3" /><path d="M20 14h2" />
             </svg>
           </span>
-          <h2 class="pname">PM10</h2>
+          <h2 class="pname">PM₁₀</h2>
           <p class="pfull">Coarse Particulate Matter</p>
           <p class="card-meta">Particles ≤ 10 µm · 5 WMS layers</p>
           <span class="goto">
@@ -142,7 +143,7 @@
               </svg>
               Open WebGIS
             </span>
-            <p class="layers-hint">16 WMS layers · GeoServer · OpenLayers v7</p>
+            <p class="layers-hint">15 WMS layers · GeoServer · OpenLayers v7</p>
           </div>
         </a>
       </div>
@@ -150,105 +151,32 @@
   </section>
 
   <main>
-    <!-- ABOUT ------------------------------------------------------------ -->
     <section class="section" id="about">
       <div class="section-heading">
-        <p class="eyebrow">Overview</p>
         <h2>About This Project</h2>
       </div>
-      <p class="lead-text">
-        This project analyses air quality conditions in Greece for three pollutants —
-        NO₂, PM2.5 and PM10 — and presents the results through an interactive WebGIS
-        platform. The study integrates pollutant concentration data, land cover change,
-        population distribution and administrative boundaries to assess both spatial
-        pollution patterns and population exposure.
-      </p>
 
       <div class="summary-grid">
         <article class="summary-card">
           <span class="card-number">01</span>
           <h3>Data Collection</h3>
-          <p>
-            The analysis uses CAMS reanalysis pollutant rasters, ESRI Land Cover data,
-            WorldPop population data and GAUL Level 2 administrative boundaries. Together
-            these datasets support pollutant mapping, land cover transition analysis and
-            exposure assessment for all three pollutants.
-          </p>
+          <p>CAMS reanalysis rasters, ESRI Land Cover, WorldPop population grid and GAUL Level 2 boundaries.</p>
         </article>
-
         <article class="summary-card">
           <span class="card-number">02</span>
           <h3>Spatial Analysis</h3>
-          <p>
-            Raster clipping, reprojection, annual aggregation, reclassification, raster
-            calculation and zonal statistics were used to process the air quality and
-            land cover datasets, converting raw spatial data into interpretable maps and
-            charts.
-          </p>
+          <p>Clipping, reprojection, annual averaging, reclassification and zonal statistics in QGIS.</p>
         </article>
-
         <article class="summary-card">
           <span class="card-number">03</span>
           <h3>Exposure Assessment</h3>
-          <p>
-            Bivariate mapping combines pollutant concentration classes with population
-            classes. This method identifies areas where high pollution levels overlap with
-            dense population, indicating higher exposure risk for residents.
-          </p>
+          <p>5×5 bivariate mapping of pollutant concentration classes against population density by administrative zone.</p>
         </article>
       </div>
 
-      <!-- DATA & TOOLS -->
-      <div class="data-tools">
-        <div class="data-tools-header">
-          <h2>Datasets and Processing Environment</h2>
-          <p>
-            The project combines satellite-derived pollutant data, land cover products,
-            population grids and administrative boundaries. QGIS was used for spatial
-            processing and layout design, while GeoServer and OpenLayers deliver the
-            published layers to the WebGIS viewer.
-          </p>
-        </div>
-
-        <div class="tool-grid">
-          <article>
-            <h3>CAMS Reanalysis</h3>
-            <p>Monthly pollutant rasters used to map NO₂, PM2.5 and PM10 concentration patterns.</p>
-          </article>
-          <article>
-            <h3>ESRI Land Cover</h3>
-            <p>Land cover rasters from 2021 and 2023 used to detect built area and land cover transitions.</p>
-          </article>
-          <article>
-            <h3>WorldPop</h3>
-            <p>Population raster data used to evaluate population exposure to pollutant concentration classes.</p>
-          </article>
-          <article>
-            <h3>GAUL Level 2</h3>
-            <p>Administrative boundaries used for zonal statistics and bivariate exposure mapping.</p>
-          </article>
-          <article>
-            <h3>QGIS</h3>
-            <p>Main GIS platform for clipping, reprojection, raster calculation, classification and map layouts.</p>
-          </article>
-          <article>
-            <h3>GeoServer + OpenLayers</h3>
-            <p>GeoServer publishes the WMS services, while OpenLayers v7 builds the interactive WebGIS interface.</p>
-          </article>
-        </div>
-      </div>
-
-      <!-- KEY FINDINGS -->
       <div class="key-findings">
         <h2>Key Findings</h2>
-        <p>
-          NO₂ concentrations are mainly concentrated around urban and transport-related
-          areas, especially near Athens and parts of northern Greece. PM10 levels are
-          highest in northern lowlands and areas of active construction, while PM2.5 is
-          strongly tied to urban agglomerations such as the Athens basin. Across all three
-          pollutants, the bivariate exposure analysis shows that population distribution
-          strongly affects how air quality risk should be interpreted.
-        </p>
+        <p>NO₂ peaks near Athens and northern urban corridors; PM₁₀ is highest in northern lowlands and construction zones; PM₂.₅ is concentrated in the Athens basin. Population-weighted exposure reveals that high-risk zones are smaller in area but affect a disproportionately large share of the population.</p>
         <a class="outline-btn" href="results.html">Explore the Results</a>
       </div>
     </section>

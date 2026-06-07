@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Greece Air Quality | Workflow</title>
+<link rel="stylesheet" href="style.css?v=2"/>
+<style>
+.wf-section { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
+.wf-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #1d7f8c; margin: 0 0 10px; }
+.wf-section h1 { font-size: 38px; color: #18353c; margin: 0 0 12px; font-weight: 800; }
+.wf-section > p { font-size: 17px; color: #52666b; max-width: 720px; line-height: 1.75; margin: 0 0 48px; }
+
+/* ── Pipeline row ── */
+.wf-pipeline { display: flex; margin-bottom: 36px; }
+.wf-node {
+  flex: 1; position: relative; cursor: pointer;
+  padding: 18px 16px 18px 22px;
+  background: #f5f9f7; border: 1px solid #c8d8d5;
+  border-right: none;
+  transition: background 0.2s, border-color 0.2s;
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%, 18px 50%);
+  margin-right: -1px;
+}
+.wf-node:first-child { clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%); padding-left: 20px; }
+.wf-node:last-child  { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 18px 50%); }
+.wf-node.active { background: #1d5c63; border-color: #1d5c63; z-index: 2; }
+.wf-node:hover:not(.active) { background: #e8f3ef; }
+.wf-node-num { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #aabcbe; margin-bottom: 4px; }
+.wf-node.active .wf-node-num { color: rgba(255,255,255,0.6); }
+.wf-node-title { font-size: 13px; font-weight: 700; color: #18353c; line-height: 1.3; }
+.wf-node.active .wf-node-title { color: #fff; }
+
+/* ── Detail panel ── */
+.wf-detail {
+  background: #fff; border: 1px solid #dbe6e3;
+  border-radius: 0 0 20px 20px; border-top: 3px solid #1d5c63;
+  padding: 36px 42px 40px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.07);
+  animation: wfIn 0.28s ease;
+}
+@keyframes wfIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+.wf-detail-header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid #edf1ef; }
+.wf-detail-badge {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: #1d5c63; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 800; flex-shrink: 0;
+  font-family: 'Georgia', serif;
+}
+.wf-detail-header h2 { font-size: 22px; color: #18353c; font-weight: 700; margin: 0 0 4px; }
+.wf-detail-header p  { font-size: 13px; color: #7a9a9f; margin: 0; font-style: italic; }
+
+/* ── Sub-steps grid ── */
+.wf-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+.wf-step {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 16px 18px; background: #f9fbfa;
+  border: 1px solid #e4eeeb; border-radius: 10px;
+}
+.wf-step-idx { font-size: 11px; font-weight: 800; color: #1d9e8c; min-width: 28px; padding-top: 2px; letter-spacing: 0.5px; }
+.wf-step-title { font-size: 13px; font-weight: 700; color: #18353c; margin-bottom: 4px; }
+.wf-step-desc  { font-size: 12px; color: #52666b; line-height: 1.6; }
+
+/* ── Tools row ── */
+.wf-tools { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid #edf1ef; }
+.wf-tools-lbl { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #aabcbe; margin-right: 4px; }
+.wf-tool { font-size: 11px; font-weight: 600; color: #1d5c63; background: #e8f3ef; padding: 4px 12px; border-radius: 999px; }
+
+@media (max-width: 900px) {
+  .wf-pipeline { flex-direction: column; gap: 4px; }
+  .wf-node { clip-path: none !important; border-right: 1px solid #c8d8d5; border-radius: 10px; margin-right: 0; margin-bottom: 4px; }
+  .wf-steps { grid-template-columns: 1fr; }
+  .wf-detail { padding: 24px 20px; }
+}
+</style>
+</head>
+
+<body>
+<header class="site-header">
+  <nav class="navbar">
+    <a class="logo" href="index.html">AIR QUALITY IN GREECE · GROUP 05</a>
+    <div class="nav-links">
+      <a href="index.html">home</a>
+      <a href="workflow.html" class="active">workflow</a>
+      <a href="results.html">results</a>
+      <a href="webgis.html">webgis</a>
+      <a href="https://github.com/sumumu-0107/webgis_group05" class="github-link" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="wf-section">
+    <h1>Analysis Workflow</h1>
+    <p>The same analytical pipeline was applied uniformly to NO₂, PM₂.₅ and PM₁₀. Each phase covers a distinct stage of the spatial analysis, from raw data acquisition through to GeoServer publication and WebGIS integration.</p>
+
+    <div class="wf-pipeline" id="pipeline"></div>
+    <div class="wf-detail"  id="detail"></div>
+  </section>
+</main>
+
+<footer>
+  <p>GIS Lab · Greece Air Quality WebGIS · Group 05 ·
+    <a href="https://github.com/sumumu-0107/webgis_group05" target="_blank" rel="noopener">GitHub repository</a>
+  </p>
+</footer>
+
+<script>
+var phases = [
+  {
+    num: "01", title: "Data & Preparation",
+    sub: "Dataset acquisition, spatial clipping and CRS harmonisation",
+    steps: [
+      { i:"1.1", t:"CAMS Reanalysis Acquisition",   d:"Monthly NO₂, PM2.5 and PM10 rasters for 2021–2023 downloaded from the Copernicus Atmosphere Data Store." },
+      { i:"1.2", t:"Ancillary Datasets",             d:"ESRI Land Cover (2021, 2023), WorldPop population raster (2023) and GAUL Level 2 administrative boundaries collected." },
+      { i:"1.3", t:"Study Area Clipping",            d:"All raster and vector layers clipped to the Greece boundary mask to ensure a consistent spatial extent." },
+      { i:"1.4", t:"CRS & Raster Alignment",         d:"Layers reprojected to a common CRS; nearest-neighbour resampling applied to preserve discrete land cover class values." }
+    ],
+    tools: ["Copernicus ADS","ESRI Land Cover","WorldPop","QGIS Reproject","QGIS Align Rasters"]
+  },
+  {
+    num: "02", title: "Pollutant Mapping",
+    sub: "Monthly snapshot, annual average calculation and concentration classification",
+    steps: [
+      { i:"2.1", t:"December 2023 Monthly Map",      d:"Monthly raster clipped and styled with a continuous colour ramp; PM2.5 required hourly-to-monthly temporal aggregation via Raster Calculator." },
+      { i:"2.2", t:"Annual Average Calculation",     d:"Twelve monthly bands averaged per year — (Band_01 + … + Band_12) / 12 — producing annual mean rasters for both 2021 and 2023." },
+      { i:"2.3", t:"Concentration Classification",   d:"Annual mean reclassified into 5 discrete classes using EU/WHO thresholds; Greece exhibits mainly Classes 1–3 across all pollutants." },
+      { i:"2.4", t:"Cartographic Export",            d:"Maps produced in QGIS Layout with title, legend, scale bar and north arrow conforming to cartographic standards." }
+    ],
+    tools: ["QGIS Raster Calculator","Reclassify by Table","QGIS Layout","EU / WHO Guidelines"]
+  },
+  {
+    num: "03", title: "Change Analysis",
+    sub: "Temporal pollutant change, land cover transitions and zonal statistics",
+    steps: [
+      { i:"3.1", t:"AMAC Raster Generation",         d:"Annual Mean Aggregation Change computed as 2023 mean − 2021 mean; output classified into decrease, stable and increase categories." },
+      { i:"3.2", t:"Land Cover Change Detection",    d:"Transition map derived from 2021 × 100 + 2023; built area classes extracted for NO₂ and PM10, crop classes for PM2.5." },
+      { i:"3.3", t:"Zonal Statistics",               d:"AMAC raster intersected with land cover transition zones; mean, minimum and maximum change values extracted per class." },
+      { i:"3.4", t:"Statistical Visualisation",      d:"Zonal statistics exported and rendered as comparative bar charts presented on the Results page." }
+    ],
+    tools: ["QGIS Raster Calculator","Zonal Statistics","Field Calculator","QGIS Layout"]
+  },
+  {
+    num: "04", title: "Exposure Assessment",
+    sub: "Population classification, bivariate mapping and exposure summary",
+    steps: [
+      { i:"4.1", t:"Population Classification",      d:"WorldPop 2023 raster reclassified into 5 quantile-based demographic classes with careful NoData handling inside the study area." },
+      { i:"4.2", t:"Bivariate Field Encoding",       d:"Per GAUL L2 zone: bivariate = pol_class_max × 10 + pop_class_median, producing unique two-digit codes from 11 to 55." },
+      { i:"4.3", t:"5×5 Bivariate Map",              d:"Predefined QML style applied to reveal zones where high pollutant concentration and high population count coincide." },
+      { i:"4.4", t:"Population Exposure Chart",      d:"Layer dissolved by pollution class; Zonal Statistics computes cumulative population per class for the exposure pie chart." }
+    ],
+    tools: ["QGIS Zonal Statistics","Field Calculator","Dissolve","5×5 Bivariate QML"]
+  },
+  {
+    num: "05", title: "Publication",
+    sub: "Static map export, GeoServer WMS publication and WebGIS integration",
+    steps: [
+      { i:"5.1", t:"Static Map Export",              d:"All final maps exported as PNG from QGIS Layout; bar and pie charts exported separately as statistical graphics." },
+      { i:"5.2", t:"GeoServer Publishing",           d:"Concentration class, AMAC, land cover transition and bivariate layers published under workspace gisgeoserver_05." },
+      { i:"5.3", t:"WMS Style Assignment",           d:"SLD/QML styles applied before publishing; the 5×5 bivariate style is required for all population exposure layers." },
+      { i:"5.4", t:"WebGIS Integration",             d:"WMS endpoints connected to the OpenLayers v7 interface; layers organised by pollutant group with toggle controls." }
+    ],
+    tools: ["QGIS Layout","GeoServer WMS","SLD / QML Styles","OpenLayers v7"]
+  }
+];
+
+var cur = 0;
+
+function renderPipeline() {
+  var html = '';
+  phases.forEach(function(p, i) {
+    html += '<div class="wf-node' + (i === cur ? ' active' : '') + '" data-i="' + i + '">'
+          + '<div class="wf-node-num">Phase ' + p.num + '</div>'
+          + '<div class="wf-node-title">' + p.title + '</div>'
+          + '</div>';
+  });
+  document.getElementById('pipeline').innerHTML = html;
+  document.querySelectorAll('.wf-node').forEach(function(n) {
+    n.addEventListener('click', function() {
+      cur = parseInt(n.getAttribute('data-i'));
+      renderPipeline();
+      renderDetail();
+    });
+  });
+}
+
+function renderDetail() {
+  var p = phases[cur];
+  var stepsHtml = p.steps.map(function(s) {
+    return '<div class="wf-step">'
+         + '<div class="wf-step-idx">' + s.i + '</div>'
+         + '<div><div class="wf-step-title">' + s.t + '</div>'
+         + '<div class="wf-step-desc">' + s.d + '</div></div>'
+         + '</div>';
+  }).join('');
+  var toolsHtml = p.tools.map(function(t) {
+    return '<span class="wf-tool">' + t + '</span>';
+  }).join('');
+  document.getElementById('detail').innerHTML =
+    '<div class="wf-detail-header">'
+    + '<div class="wf-detail-badge">' + p.num + '</div>'
+    + '<div><h2>' + p.title + '</h2><p>' + p.sub + '</p></div>'
+    + '</div>'
+    + '<div class="wf-steps">' + stepsHtml + '</div>';
+}
+
+renderPipeline();
+renderDetail();
+</script>
+</body>
+</html>

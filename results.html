@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -13,6 +13,7 @@
       <a class="logo" href="index.html">AIR QUALITY IN GREECE · GROUP 05</a>
       <div class="nav-links">
         <a href="index.html">home</a>
+        <a href="workflow.html">workflow</a>
         <a href="results.html" class="active">results</a>
         <a href="webgis.html">webgis</a>
         <a href="https://github.com/sumumu-0107/webgis_group05" class="github-link" target="_blank" rel="noopener">GitHub</a>
@@ -23,333 +24,244 @@
   <main>
     <section class="section" id="results">
       <div class="section-heading">
-        <p class="eyebrow">Spatial Outputs</p>
         <h2>Results</h2>
-        <p>
-          The results present the final maps and charts generated for each pollutant.
-          The interpretation focuses on spatial concentration patterns, annual change,
-          land cover transition statistics and population exposure. Use the tabs to switch
-          between NO₂, PM2.5 and PM10.
-        </p>
+        <p>Select a tab to explore concentration maps, annual change and population exposure for each pollutant.</p>
       </div>
 
-      <!-- TAB BUTTONS -->
-      <div class="pollutant-tabs" role="tablist" aria-label="Pollutant results">
-        <button class="tab-btn active" role="tab" id="tab-no2"
-                aria-controls="panel-no2" aria-selected="true" data-target="no2">NO₂</button>
-        <button class="tab-btn" role="tab" id="tab-pm25"
-                aria-controls="panel-pm25" aria-selected="false" data-target="pm25">PM2.5</button>
-        <button class="tab-btn" role="tab" id="tab-pm10"
-                aria-controls="panel-pm10" aria-selected="false" data-target="pm10">PM10</button>
-      </div>
+      <div class="results-layout">
 
-      <!-- ==============================================================
-           NO2 PANEL
-           ============================================================== -->
+        <!-- TAB BUTTONS (vertical) -->
+        <div class="pollutant-tabs" role="tablist" aria-label="Pollutant results">
+          <button class="tab-btn active" role="tab" id="tab-no2"
+                  aria-controls="panel-no2" aria-selected="true" data-target="no2">NO&#8322;</button>
+          <button class="tab-btn" role="tab" id="tab-pm25"
+                  aria-controls="panel-pm25" aria-selected="false" data-target="pm25">PM&#8322;.&#8325;</button>
+          <button class="tab-btn" role="tab" id="tab-pm10"
+                  aria-controls="panel-pm10" aria-selected="false" data-target="pm10">PM&#8321;&#8320;</button>
+        </div>
+
+        <div class="results-panels">
+
+        <!-- NO2 panel -->
       <div class="tab-panel active" id="panel-no2" role="tabpanel" aria-labelledby="tab-no2">
-        <article class="result-block">
-          <h3>NO₂ Concentration in Greece, December 2023</h3>
-          <img src="img/no2/NO2_December_2023_map.png"
-               alt="Map of NO2 concentration across Greece in December 2023" />
-          <p>
-            The December 2023 NO₂ map shows an uneven distribution across Greece. Higher
-            values appear around major urban and transport-related regions, especially the
-            Athens metropolitan area and parts of northern Greece, while many island and
-            rural regions show lower values. This monthly snapshot precedes the annual
-            average calculation.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>Annual Average NO₂ Concentration, 2023</h3>
-          <img src="img/no2/NO2_average_2023_map.png"
-               alt="Map of annual average NO2 concentration across Greece in 2023" />
-          <p>
-            The annual average map highlights the stable spatial pattern of NO₂ in 2023.
-            Higher values concentrate around urbanised areas, while lower values spread
-            across rural and island regions. Compared with the December map, the annual
-            average smooths monthly fluctuations and is better suited to classification and
-            exposure analysis.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>NO₂ Concentration Classes, 2023</h3>
-          <img src="img/no2/NO2_concentration_map_2023.png"
-               alt="Map of NO2 concentration classes across Greece in 2023" />
-          <p>
-            The concentration class map divides annual average NO₂ into air quality classes.
-            Greece mainly contains Class 1, Class 2 and Class 3 values, with most of the
-            country in Class 1, indicating relatively low NO₂ levels. Class 2 and Class 3
-            areas are more limited and are mainly associated with urban regions.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>NO₂ Annual Mean Aggregation Change, 2021–2023</h3>
-          <img src="img/no2/NO2_AMAC_2021_2023_map.png"
-               alt="Map of NO2 annual mean aggregation change between 2021 and 2023" />
-          <p>
-            The NO₂ AMAC map shows both increases and decreases between 2021 and 2023.
-            Some regions show slight or moderate increases while others remain stable or
-            decline. Stronger changes appear in localised zones rather than across the whole
-            country, reflecting differences in urban activity, transport intensity and
-            regional emission patterns.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>Built Area Change and NO₂ Change Statistics</h3>
-          <div class="double-img">
-            <img src="img/no2/Built_Area_Change_2021_2023_map.png"
-                 alt="Map of built area change in Greece between 2021 and 2023" />
-            <img src="img/no2/Greece_no2_zonal_statistics_2021_2023_bar.png"
-                 alt="Bar chart of NO2 change statistics by built area transition type" />
-          </div>
-          <p>
-            The built area change map identifies Stable Built Area, Built Area Gain and Built
-            Area Loss. Most built-up pixels are stable, while gain and loss areas are scattered.
-            The bar chart shows Built Area Loss with the highest mean NO₂ change (about
-            1.173 µg/m³), while Stable Built Area carries the highest maximum value, suggesting
-            persistent urban areas experienced strong localised NO₂ increases.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>NO₂–Population Bivariate Exposure</h3>
-          <div class="double-img">
-            <img src="img/no2/NO2_bivariate_map_2023.png"
-                 alt="Bivariate map of NO2 concentration and population in Greece, 2023" />
-            <img src="img/no2/legend_bivariate_5x5.png"
-                 alt="5 by 5 bivariate legend combining NO2 class and population class" />
-          </div>
-          <p>
-            The bivariate map combines NO₂ concentration class and population class at the
-            GAUL Level 2 scale. The first digit represents the NO₂ class, the second the
-            population class. Visible combinations include 13, 14, 23 and 35; the Class 35
-            area is especially important because it combines a higher NO₂ class with a high
-            population class.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>Population Exposure to NO₂ Concentration Classes</h3>
-          <img src="img/no2/Greece_no2_2023_pie_chart.png"
-               alt="Pie chart of population exposure to NO2 concentration classes" />
-          <p>
-            The exposure pie chart shows 36.24% of the population in Class 1, 26.81% in
-            Class 2 and 36.96% in Class 3. Although much of the territory is mapped as low
-            concentration, a considerable share of the population falls into higher NO₂
-            exposure classes, demonstrating why population-weighted exposure analysis is
-            necessary in addition to simple spatial mapping.
-          </p>
-        </article>
+        <div class="rp-stage">
+          <button class="rp-nav-btn rp-lbtn" data-panel="no2" data-dir="-1" aria-label="Previous">&#8249;</button>
+          <div class="rp-card" id="card-no2"></div>
+          <button class="rp-nav-btn rp-rbtn" data-panel="no2" data-dir="1" aria-label="Next">&#8250;</button>
+        </div>
+        <div class="rp-dots" id="dots-no2"></div>
       </div>
 
-      <!-- ==============================================================
-           PM2.5 PANEL
-           ============================================================== -->
+      <!-- PM2.5 panel -->
       <div class="tab-panel" id="panel-pm25" role="tabpanel" aria-labelledby="tab-pm25">
-        <article class="result-block">
-          <h3>PM2.5 Concentration in Greece, December 2023</h3>
-          <img src="img/pm25/Greece_CAMS_pm2p5_2023_12.png"
-               alt="Map of PM2.5 concentration across Greece in December 2023" />
-          <p>
-            The December 2023 PM2.5 map shows higher concentrations around major urban and
-            transport-related areas, especially Athens and parts of northern Greece, while many
-            island and rural regions show lower values. Short-term PM2.5 is strongly influenced
-            by urban activity, traffic intensity and regional emission sources.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>Annual Average PM2.5 Concentration, 2023</h3>
-          <img src="img/pm25/Greece_average_pm2p5_2023.png"
-               alt="Map of annual average PM2.5 concentration across Greece in 2023" />
-          <p>
-            The annual average map shows the highest values concentrated around large urban
-            areas, especially the Athens region, with lower values in less urbanised mainland
-            areas and many islands. The annual average smooths short-term fluctuations and
-            highlights the clear contrast between urbanised and non-urbanised areas.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>PM2.5 Concentration Classes, 2023</h3>
-          <img src="img/pm25/Greece_pm2p5_concentration_map_2023.png"
-               alt="Map of PM2.5 concentration classes across Greece in 2023" />
-          <p>
-            The class map shows mainly Class 1, Class 2 and Class 3, with most of the country
-            in Class 2 and Class 3 (between 5 and 20 µg/m³). Class 1 areas are limited, mainly
-            around specific islands and high-altitude ecosystems. This classification provides
-            the pollutant input for the bivariate exposure map.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>PM2.5 Annual Mean Aggregation Change, 2021–2023</h3>
-          <img src="img/pm25/Greece_pm2p5_2021_2023_AMAC_map.png"
-               alt="Map of PM2.5 annual mean aggregation change between 2021 and 2023" />
-          <p>
-            The PM2.5 AMAC map shows both increases and decreases. Western Greece forms a
-            distinct increase hotspot, while eastern administrative regions and coastal plains
-            show neutral to stabilising trends (0 to −1.5 µg/m³). The change is spatially
-            uneven, showing not only where PM2.5 was high in 2023 but where conditions shifted
-            since 2021.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>PM2.5 Change Statistics by Crop Area Transition</h3>
-          <div class="double-img">
-            <img src="img/pm25/Greece_pm2p5_zonal_statistics_2021_2023.png"
-                 alt="Map of PM2.5 zonal statistics by crop area transition type, 2021 to 2023" />
-            <img src="img/pm25/Greece_pm2p5_zonal_statistics_2021_2023_bar.png"
-                 alt="Bar chart of PM2.5 change statistics by crop area transition type" />
-          </div>
-          <p>
-            Using crop area transitions as zones, Stable Crop Area shows a mean PM2.5 change of
-            about 0.226 µg/m³, Crop Area Gain about 0.088 µg/m³, and Crop Area Loss a negative
-            mean of −0.101 µg/m³. PM2.5 grew least in newly gained crop cover, a relative
-            buffering signature, while all classes share local bounds from −4.392 to
-            +4.717 µg/m³.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>Crop Gain and Loss Percentage and Area Statistics</h3>
-          <img src="img/pm25/Gain_lost_statistics.png"
-               alt="Chart of crop gain and loss percentage and area statistics, 2021 to 2023" />
-          <p>
-            The crop gain and loss statistics summarise how much agricultural land was gained or
-            lost between 2021 and 2023 across different transition categories. The chart presents
-            both the percentage share and the absolute area for each transition type, giving a
-            quantitative basis for interpreting the PM2.5 zonal statistics above.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>PM2.5–Population Bivariate Exposure</h3>
-          <div class="double-img">
-            <img src="img/pm25/Greece_pm2p5_2023_bivariate_map.png"
-                 alt="Bivariate map of PM2.5 concentration and population in Greece, 2023" />
-            <img src="img/pm25/legend_bivariate_5x5.png"
-                 alt="5 by 5 bivariate legend combining PM2.5 class and population class" />
-          </div>
-          <p>
-            The bivariate map combines PM2.5 class and population class at the administrative
-            zone level. Visible combinations include 33, 34 and 35: several regions share a
-            baseline Class 3 pollution level but differ in demographic weight. The Class 35
-            areas are especially important, capturing critical urban centres such as Athens.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>Population Exposure to PM2.5 Concentration Classes</h3>
-          <img src="img/pm25/Greece_pm2p5_2023_pie_chart.png"
-               alt="Pie chart of population exposure to PM2.5 concentration classes" />
-          <p>
-            The exposure chart shows essentially the entire calculated population in Class 3
-            (greater than 10 and up to 20 µg/m³), because this regulatory tier covers the
-            populated provincial zones uniformly. Even though much of the territory maps as
-            lower concentration, population-weighted analysis reveals widespread exposure to
-            the higher class.
-          </p>
-        </article>
+        <div class="rp-stage">
+          <button class="rp-nav-btn rp-lbtn" data-panel="pm25" data-dir="-1" aria-label="Previous">&#8249;</button>
+          <div class="rp-card" id="card-pm25"></div>
+          <button class="rp-nav-btn rp-rbtn" data-panel="pm25" data-dir="1" aria-label="Next">&#8250;</button>
+        </div>
+        <div class="rp-dots" id="dots-pm25"></div>
       </div>
 
-      <!-- ==============================================================
-           PM10 PANEL
-           ============================================================== -->
+      <!-- PM10 panel -->
       <div class="tab-panel" id="panel-pm10" role="tabpanel" aria-labelledby="tab-pm10">
-        <article class="result-block">
-          <h3>PM10 Concentration in Greece, December 2023</h3>
-          <img src="img/pm10/Greece_pm10_monthly_dec_2023.png"
-               alt="Map of PM10 concentration across Greece in December 2023" />
-          <p>
-            The December 2023 PM10 map shows higher values mainly in northern and central
-            Greece, where urban heating, road traffic, agriculture and dust resuspension raise
-            winter levels. Thessaloniki and the Thessaly plain stand out, while coastal and
-            island areas benefit from sea-breeze dispersion.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>Annual Average PM10 Concentration, 2023</h3>
-          <img src="img/pm10/Greece_pm10_average_2023_map.png"
-               alt="Map of annual average PM10 concentration across Greece in 2023" />
-          <p>
-            The annual average map concentrates the highest values in northern Greece, around
-            Thessaloniki, the Thessaly plain and Central Macedonia, driven by industry, traffic,
-            construction and agricultural burning. The Greater Athens area is also elevated,
-            while southern Greece and the Aegean islands generally show lower annual averages.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>PM10 Concentration Classes, 2023</h3>
-          <img src="img/pm10/Greece_pm10_concentration_map_2023.png"
-               alt="Map of PM10 concentration classes across Greece in 2023" />
-          <p>
-            The class map shows mainly Class 1, Class 2 and Class 3, with Class 4 and Class 5
-            nearly absent. Class 1 covers mountainous, island and southern coastal areas;
-            Class 2 dominates mid-sized urban zones and agricultural lowlands; and Class 3
-            appears in the most urbanised and industrialised areas around Thessaloniki and
-            Greater Athens.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>PM10 Annual Mean Aggregation Change, 2021–2023</h3>
-          <img src="img/pm10/Greece_pm10_2021_2023_AMAC_map.png"
-               alt="Map of PM10 annual mean aggregation change between 2021 and 2023" />
-          <p>
-            The PM10 AMAC map shows increases in parts of northern and central Greece, linked to
-            expanded construction, new road infrastructure and agricultural land disturbance,
-            while parts of Attica and several islands show slight decreases. The pattern is
-            spatially heterogeneous, driven by local activity and land use rather than a uniform
-            national trend.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>PM10 Zonal Statistics by Built Area Transition</h3>
-          <img src="img/pm10/Greece_pm10_zonal_statistics_2021_2023.png"
-               alt="Chart of PM10 change statistics by built area transition type, 2021 to 2023" />
-          <p>
-            Using built area transitions as zones, Built Area Gain shows the highest mean PM10
-            change, reflecting increased particulate matter from ground disturbance and
-            construction machinery. Stable Built Area shows a moderate mean change, while Built
-            Area Loss shows the smallest or slightly negative mean, consistent with reduced dust
-            generation where hard surfaces were removed.
-          </p>
-        </article>
-
-        <article class="result-block">
-          <h3>PM10–Population Bivariate Exposure</h3>
-          <div class="double-img">
-            <img src="img/pm10/Greece_pm10_2023_bivariate.png"
-                 alt="Bivariate map of PM10 concentration and population in Greece, 2023" />
-            <img src="img/pm10/legend_bivariate_5x5.png"
-                 alt="5 by 5 bivariate legend combining PM10 class and population class" />
-          </div>
-          <p>
-            The bivariate map combines PM10 class and population class. Zones high in both
-            dimensions mark the greatest public-health concern and cluster around Thessaloniki
-            and metropolitan Athens. Northern peripheral zones show elevated PM10 but smaller
-            populations, while rural and island zones are low in both dimensions.
-          </p>
-        </article>
+        <div class="rp-stage">
+          <button class="rp-nav-btn rp-lbtn" data-panel="pm10" data-dir="-1" aria-label="Previous">&#8249;</button>
+          <div class="rp-card" id="card-pm10"></div>
+          <button class="rp-nav-btn rp-rbtn" data-panel="pm10" data-dir="1" aria-label="Next">&#8250;</button>
+        </div>
+        <div class="rp-dots" id="dots-pm10"></div>
       </div>
+
+        </div><!-- /.results-panels -->
+      </div><!-- /.results-layout -->
+
     </section>
   </main>
 
   <footer>
-    <p>GIS Lab · Greece Air Quality WebGIS · Group 05 ·
+    <p>GIS Lab &middot; Greece Air Quality WebGIS &middot; Group 05 &middot;
       <a href="https://github.com/sumumu-0107/webgis_group05" target="_blank" rel="noopener">GitHub repository</a>
     </p>
   </footer>
 
   <script src="results.js"></script>
+  <script>
+  (function () {
+    "use strict";
+
+    var FIGURES = {
+      no2: [
+        { fig:"Figure 1", title:"NO\u2082 Concentration in Greece, December 2023",
+          img:[{src:"img/no2/NO2_December_2023_map.png",alt:"Map of NO2 concentration across Greece in December 2023"}],
+          desc:"The December 2023 NO\u2082 map shows an uneven distribution across Greece. Higher values appear around major urban and transport-related regions, especially the Athens metropolitan area and parts of northern Greece, while many island and rural regions show lower values. This monthly snapshot precedes the annual average calculation." },
+        { fig:"Figure 2", title:"Annual Average NO\u2082 Concentration, 2023",
+          img:[{src:"img/no2/NO2_average_2023_map.png",alt:"Map of annual average NO2 concentration across Greece in 2023"}],
+          desc:"The annual average map highlights the stable spatial pattern of NO\u2082 in 2023. Higher values concentrate around urbanised areas, while lower values spread across rural and island regions. Compared with the December map, the annual average smooths monthly fluctuations and is better suited to classification and exposure analysis." },
+        { fig:"Figure 3", title:"NO\u2082 Concentration Classes, 2023",
+          img:[{src:"img/no2/NO2_concentration_map_2023.png",alt:"Map of NO2 concentration classes across Greece in 2023"}],
+          desc:"The concentration class map divides annual average NO\u2082 into air quality classes. Greece mainly contains Class 1, Class 2 and Class 3 values, with most of the country in Class 1, indicating relatively low NO\u2082 levels. Class 2 and Class 3 areas are more limited and are mainly associated with urban regions." },
+        { fig:"Figure 4", title:"NO\u2082 Annual Mean Aggregation Change, 2021\u20132023",
+          img:[{src:"img/no2/NO2_AMAC_2021_2023_map.png",alt:"Map of NO2 annual mean aggregation change between 2021 and 2023"}],
+          desc:"The NO\u2082 AMAC map shows both increases and decreases between 2021 and 2023. Some regions show slight or moderate increases while others remain stable or decline. Stronger changes appear in localised zones rather than across the whole country, reflecting differences in urban activity, transport intensity and regional emission patterns." },
+        { fig:"Figure 5", title:"Built Area Change and NO\u2082 Change Statistics",
+          img:[{src:"img/no2/Built_Area_Change_2021_2023_map.png",alt:"Map of built area change in Greece between 2021 and 2023"},{src:"img/no2/Greece_no2_zonal_statistics_2021_2023_bar.png",alt:"Bar chart of NO2 change statistics by built area transition type"}],
+          desc:"The built area change map identifies Stable Built Area, Built Area Gain and Built Area Loss. Most built-up pixels are stable, while gain and loss areas are scattered. The bar chart shows Built Area Loss with the highest mean NO\u2082 change (about 1.173 \u00b5g/m\u00b3), while Stable Built Area carries the highest maximum value, suggesting persistent urban areas experienced strong localised NO\u2082 increases." },
+        { fig:"Figure 6", title:"Built Area Gain and Loss Statistics",
+          img:[{src:"img/no2/Gain_lost_statistics.png",alt:"Chart of built area gain and loss percentage and area statistics for Greece, 2021 to 2023"}],
+          desc:"The built area gain and loss statistics summarise how much urban land was gained or lost between 2021 and 2023 across different transition categories. The chart presents both the percentage share and the absolute area for each transition type, giving a quantitative basis for interpreting the NO\u2082 zonal statistics above." },
+        { fig:"Figure 7", title:"NO\u2082\u2013Population Bivariate Exposure",
+          img:[{src:"img/no2/NO2_bivariate_map_2023.png",alt:"Bivariate map of NO2 concentration and population in Greece, 2023"},{src:"img/no2/legend_bivariate_5x5.png",alt:"5x5 bivariate legend combining NO2 class and population class"}],
+          desc:"The bivariate map combines NO\u2082 concentration class and population class at the GAUL Level 2 scale. The first digit represents the NO\u2082 class, the second the population class. Visible combinations include 13, 14, 23 and 35; the Class 35 area is especially important because it combines a higher NO\u2082 class with a high population class." },
+        { fig:"Figure 8", title:"Population Exposure to NO\u2082 Concentration Classes",
+          img:[{src:"img/no2/Greece_no2_2023_pie_chart.png",alt:"Pie chart of population exposure to NO2 concentration classes"}],
+          desc:"The exposure pie chart shows 36.24% of the population in Class 1, 26.81% in Class 2 and 36.96% in Class 3. Although much of the territory is mapped as low concentration, a considerable share of the population falls into higher NO\u2082 exposure classes, demonstrating why population-weighted exposure analysis is necessary in addition to simple spatial mapping." }
+      ],
+      pm25: [
+        { fig:"Figure 1", title:"PM\u2082.\u2085 Concentration in Greece, December 2023",
+          img:[{src:"img/pm25/Greece_CAMS_pm2p5_2023_12.png",alt:"Map of PM2.5 concentration across Greece in December 2023"}],
+          desc:"The December 2023 PM\u2082.\u2085 map shows higher concentrations around major urban and transport-related areas, especially Athens and parts of northern Greece, while many island and rural regions show lower values. Short-term PM\u2082.\u2085 is strongly influenced by urban activity, traffic intensity and regional emission sources." },
+        { fig:"Figure 2", title:"Annual Average PM\u2082.\u2085 Concentration, 2023",
+          img:[{src:"img/pm25/Greece_average_pm2p5_2023.png",alt:"Map of annual average PM2.5 concentration across Greece in 2023"}],
+          desc:"The annual average map shows the highest values concentrated around large urban areas, especially the Athens region, with lower values in less urbanised mainland areas and many islands. The annual average smooths short-term fluctuations and highlights the clear contrast between urbanised and non-urbanised areas." },
+        { fig:"Figure 3", title:"PM\u2082.\u2085 Concentration Classes, 2023",
+          img:[{src:"img/pm25/Greece_pm2p5_concentration_map_2023.png",alt:"Map of PM2.5 concentration classes across Greece in 2023"}],
+          desc:"The class map shows mainly Class 1, Class 2 and Class 3, with most of the country in Class 2 and Class 3 (between 5 and 20 \u00b5g/m\u00b3). Class 1 areas are limited, mainly around specific islands and high-altitude ecosystems. This classification provides the pollutant input for the bivariate exposure map." },
+        { fig:"Figure 4", title:"PM\u2082.\u2085 Annual Mean Aggregation Change, 2021\u20132023",
+          img:[{src:"img/pm25/Greece_pm2p5_2021_2023_AMAC_map.png",alt:"Map of PM2.5 annual mean aggregation change between 2021 and 2023"}],
+          desc:"The PM\u2082.\u2085 AMAC map shows both increases and decreases. Western Greece forms a distinct increase hotspot, while eastern administrative regions and coastal plains show neutral to stabilising trends (0 to \u22121.5 \u00b5g/m\u00b3). The change is spatially uneven, showing not only where PM\u2082.\u2085 was high in 2023 but where conditions shifted since 2021." },
+        { fig:"Figure 5", title:"PM\u2082.\u2085 Change Statistics by Crop Area Transition",
+          img:[{src:"img/pm25/Greece_pm2p5_zonal_statistics_2021_2023.png",alt:"Map of PM2.5 zonal statistics by crop area transition type, 2021 to 2023"},{src:"img/pm25/Greece_pm2p5_zonal_statistics_2021_2023_bar.png",alt:"Bar chart of PM2.5 change statistics by crop area transition type"}],
+          desc:"Using crop area transitions as zones, Stable Crop Area shows a mean PM\u2082.\u2085 change of about 0.226 \u00b5g/m\u00b3, Crop Area Gain about 0.088 \u00b5g/m\u00b3, and Crop Area Loss a negative mean of \u22120.101 \u00b5g/m\u00b3. PM\u2082.\u2085 grew least in newly gained crop cover, a relative buffering signature, while all classes share local bounds from \u22124.392 to +4.717 \u00b5g/m\u00b3." },
+        { fig:"Figure 6", title:"Crop Gain and Loss Percentage and Area Statistics",
+          img:[{src:"img/pm25/Gain_lost_statistics.png",alt:"Chart of crop gain and loss percentage and area statistics, 2021 to 2023"}],
+          desc:"The crop gain and loss statistics summarise how much agricultural land was gained or lost between 2021 and 2023 across different transition categories. The chart presents both the percentage share and the absolute area for each transition type, giving a quantitative basis for interpreting the PM\u2082.\u2085 zonal statistics above." },
+        { fig:"Figure 7", title:"PM\u2082.\u2085\u2013Population Bivariate Exposure",
+          img:[{src:"img/pm25/Greece_pm2p5_2023_bivariate_map.png",alt:"Bivariate map of PM2.5 concentration and population in Greece, 2023"},{src:"img/pm25/legend_bivariate_5x5.png",alt:"5x5 bivariate legend combining PM2.5 class and population class"}],
+          desc:"The bivariate map combines PM\u2082.\u2085 class and population class at the administrative zone level. Visible combinations include 33, 34 and 35: several regions share a baseline Class 3 pollution level but differ in demographic weight. The Class 35 areas are especially important, capturing critical urban centres such as Athens." },
+        { fig:"Figure 8", title:"Population Exposure to PM\u2082.\u2085 Concentration Classes",
+          img:[{src:"img/pm25/Greece_pm2p5_2023_pie_chart.png",alt:"Pie chart of population exposure to PM2.5 concentration classes"}],
+          desc:"The exposure chart shows essentially the entire calculated population in Class 3 (greater than 10 and up to 20 \u00b5g/m\u00b3), because this regulatory tier covers the populated provincial zones uniformly. Even though much of the territory maps as lower concentration, population-weighted analysis reveals widespread exposure to the higher class." }
+      ],
+      pm10: [
+        { fig:"Figure 1", title:"PM\u2081\u2080 Concentration in Greece, December 2023",
+          img:[{src:"img/pm10/Greece_pm10_monthly_dec_2023.png",alt:"Map of PM10 concentration across Greece in December 2023"}],
+          desc:"The December 2023 PM\u2081\u2080 map shows higher values mainly in northern and central Greece, where urban heating, road traffic, agriculture and dust resuspension raise winter levels. Thessaloniki and the Thessaly plain stand out, while coastal and island areas benefit from sea-breeze dispersion." },
+        { fig:"Figure 2", title:"Annual Average PM\u2081\u2080 Concentration, 2023",
+          img:[{src:"img/pm10/Greece_pm10_average_2023_map.png",alt:"Map of annual average PM10 concentration across Greece in 2023"}],
+          desc:"The annual average map concentrates the highest values in northern Greece, around Thessaloniki, the Thessaly plain and Central Macedonia, driven by industry, traffic, construction and agricultural burning. The Greater Athens area is also elevated, while southern Greece and the Aegean islands generally show lower annual averages." },
+        { fig:"Figure 3", title:"PM\u2081\u2080 Concentration Classes, 2023",
+          img:[{src:"img/pm10/Greece_pm10_concentration_map_2023.png",alt:"Map of PM10 concentration classes across Greece in 2023"}],
+          desc:"The class map shows mainly Class 1, Class 2 and Class 3, with Class 4 and Class 5 nearly absent. Class 1 covers mountainous, island and southern coastal areas; Class 2 dominates mid-sized urban zones and agricultural lowlands; and Class 3 appears in the most urbanised and industrialised areas around Thessaloniki and Greater Athens." },
+        { fig:"Figure 4", title:"PM\u2081\u2080 Annual Mean Aggregation Change, 2021\u20132023",
+          img:[{src:"img/pm10/Greece_pm10_2021_2023_AMAC_map.png",alt:"Map of PM10 annual mean aggregation change between 2021 and 2023"}],
+          desc:"The PM\u2081\u2080 AMAC map shows increases in parts of northern and central Greece, linked to expanded construction, new road infrastructure and agricultural land disturbance, while parts of Attica and several islands show slight decreases. The pattern is spatially heterogeneous, driven by local activity and land use rather than a uniform national trend." },
+        { fig:"Figure 5", title:"PM\u2081\u2080 Zonal Statistics by Built Area Transition",
+          img:[{src:"img/pm10/Greece_pm10_zonal_statistics_2021_2023.png",alt:"Chart of PM10 change statistics by built area transition type, 2021 to 2023"}],
+          desc:"Using built area transitions as zones, Built Area Gain shows the highest mean PM\u2081\u2080 change, reflecting increased particulate matter from ground disturbance and construction machinery. Stable Built Area shows a moderate mean change, while Built Area Loss shows the smallest or slightly negative mean, consistent with reduced dust generation where hard surfaces were removed." },
+        { fig:"Figure 6", title:"Built Area Gain and Loss Statistics",
+          img:[{src:"img/pm10/Gain_lost_statistics.png",alt:"Chart of built area gain and loss percentage and area statistics for Greece, 2021 to 2023"}],
+          desc:"The built area gain and loss statistics summarise how much urban land was gained or lost between 2021 and 2023 across different transition categories. The chart presents both the percentage share and the absolute area for each transition type, giving a quantitative basis for interpreting the PM\u2081\u2080 zonal statistics above." },
+        { fig:"Figure 7", title:"PM\u2081\u2080\u2013Population Bivariate Exposure",
+          img:[{src:"img/pm10/Greece_pm10_2023_bivariate.png",alt:"Bivariate map of PM10 concentration and population in Greece, 2023"},{src:"img/pm10/legend_bivariate_5x5.png",alt:"5x5 bivariate legend combining PM10 class and population class"}],
+          desc:"The bivariate map combines PM\u2081\u2080 class and population class. Zones high in both dimensions mark the greatest public-health concern and cluster around Thessaloniki and metropolitan Athens. Northern peripheral zones show elevated PM\u2081\u2080 but smaller populations, while rural and island zones are low in both dimensions." }
+      ]
+    };
+
+    var state = { no2:0, pm25:0, pm10:0 };
+
+    function renderCarousel(panel) {
+      var figures = FIGURES[panel];
+      var idx = state[panel];
+      var item = figures[idx];
+      var imgAreaInner;
+      if (item.img.length === 2) {
+        imgAreaInner =
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;height:100%;padding:14px;align-items:center;">'
+          + item.img.map(function(i){ return '<img src="'+i.src+'" alt="'+i.alt+'" style="width:100%;height:100%;object-fit:contain;" />'; }).join('')
+          + '</div>';
+      } else {
+        imgAreaInner = '<img src="'+item.img[0].src+'" alt="'+item.img[0].alt+'" />';
+      }
+      document.getElementById('card-'+panel).innerHTML =
+        '<div class="card-img-area">'+imgAreaInner+'</div>'
+        +'<div class="card-body-area">'
+        +'<span class="card-fig-label">'+item.fig+'</span>'
+        +'<p class="card-fig-title">'+item.title+'</p>'
+        +'<p class="card-fig-desc">'+item.desc+'</p>'
+        +'</div>';
+      var dotsEl = document.getElementById('dots-'+panel);
+      dotsEl.innerHTML = '';
+      figures.forEach(function(_,i){
+        var d = document.createElement('button');
+        d.className = 'rp-dot'+(i===idx?' active':'');
+        d.setAttribute('aria-label','Figure '+(i+1));
+        (function(ii){ d.addEventListener('click',function(){ state[panel]=ii; renderCarousel(panel); }); })(i);
+        dotsEl.appendChild(d);
+      });
+    }
+
+    document.querySelectorAll('.rp-nav-btn').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var panel=btn.getAttribute('data-panel');
+        var dir=parseInt(btn.getAttribute('data-dir'),10);
+        var n=FIGURES[panel].length;
+        state[panel]=(state[panel]+dir+n)%n;
+        renderCarousel(panel);
+      });
+    });
+
+    document.addEventListener('keydown',function(e){
+      if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight') return;
+      var ap=document.querySelector('.tab-panel.active');
+      if(!ap) return;
+      var panel=ap.id.replace('panel-','');
+      if(!FIGURES[panel]) return;
+      var n=FIGURES[panel].length;
+      state[panel]=(state[panel]+(e.key==='ArrowLeft'?-1:1)+n)%n;
+      renderCarousel(panel);
+    });
+
+    document.querySelectorAll('.tab-btn').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var panel=btn.getAttribute('data-target');
+        if(state[panel]!==undefined){ state[panel]=0; }
+      });
+    });
+
+    renderCarousel('no2');
+    renderCarousel('pm25');
+    renderCarousel('pm10');
+
+    // ---- Lightbox ----
+    function openLightbox(srcs) {
+      // srcs: array of image src strings
+      var overlay = document.createElement('div');
+      overlay.className = 'lb-overlay';
+      var inner;
+      if (srcs.length === 2) {
+        inner = '<div style="display:flex;gap:20px;align-items:center;max-width:92vw;max-height:90vh;">'
+          + srcs.map(function(s){ return '<img src="'+s+'" style="max-width:46vw;max-height:88vh;object-fit:contain;border-radius:10px;box-shadow:0 24px 80px rgba(0,0,0,0.5);" />'; }).join('')
+          + '</div>';
+      } else {
+        inner = '<img src="'+srcs[0]+'" />';
+      }
+      overlay.innerHTML = '<button class="lb-close" aria-label="Close">&times;</button>' + inner;
+      document.body.appendChild(overlay);
+      overlay.querySelector('.lb-close').addEventListener('click', function(e){ e.stopPropagation(); overlay.remove(); });
+      overlay.addEventListener('click', function(e){ if(e.target===overlay) overlay.remove(); });
+      document.addEventListener('keydown', function esc(e){ if(e.key==='Escape'){ overlay.remove(); document.removeEventListener('keydown',esc); } });
+    }
+
+    document.querySelectorAll('.rp-stage').forEach(function(stage){
+      stage.addEventListener('click', function(e){
+        var area = e.target.closest('.card-img-area');
+        if (!area) return;
+        var imgs = area.querySelectorAll('img');
+        if (!imgs.length) return;
+        openLightbox(Array.from(imgs).map(function(i){ return i.src; }));
+      });
+    });
+  }());
+  </script>
 </body>
 </html>

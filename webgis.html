@@ -7,7 +7,7 @@
 
   <!-- OpenLayers v7 stylesheet -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@7.5.2/ol.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=10" />
 </head>
 
 <body>
@@ -16,6 +16,7 @@
       <a class="logo" href="index.html">AIR QUALITY IN GREECE · GROUP 05</a>
       <div class="nav-links">
         <a href="index.html">home</a>
+        <a href="workflow.html">workflow</a>
         <a href="results.html">results</a>
         <a href="webgis.html" class="active">webgis</a>
         <a href="https://github.com/sumumu-0107/webgis_group05" class="github-link" target="_blank" rel="noopener">GitHub</a>
@@ -23,40 +24,50 @@
     </nav>
   </header>
 
-  <div class="app">
-    <!-- SIDEBAR: base map chooser, layer switcher, legend -->
-    <aside class="sidebar">
-      <section class="panel">
-        <h2>Base Map</h2>
-        <label class="row">
+  <div class="map-wrap">
+    <div id="map" class="map"></div>
+    <div id="mouse-position" class="mouse-position"></div>
+
+    <!-- Floating legend – bottom-left, overlays the map -->
+    <div id="legend" class="legend-float">
+      <div class="legend-float-title" id="legend-drag-handle">
+        <span class="drag-dots">⠿</span> Legend
+      </div>
+      <div id="legend-inner" class="legend-float-inner"></div>
+    </div>
+
+    <!-- Floating layer panel – right side -->
+    <div class="layer-panel" id="layer-panel">
+      <div class="panel-drag-handle" id="layer-panel-handle">
+        <span class="drag-dots">⠿</span> Layers
+      </div>
+
+      <section class="lp-section">
+        <div class="lp-section-title">Base Map</div>
+        <label class="lp-row">
           <input type="radio" name="basemap" value="osm" checked />
           OpenStreetMap
         </label>
-        <label class="row">
+        <label class="lp-row">
           <input type="radio" name="basemap" value="sat" />
-          Esri Satellite
+          ESRI Satellite
         </label>
       </section>
 
-      <section class="panel">
-        <h2>Layers</h2>
-        <!-- Flat list with group headers, injected by app.js -->
-        <div id="layer-switcher"></div>
+      <section class="lp-section">
+        <div class="lp-section-title">Sort</div>
+        <label class="lp-row">
+          <input type="radio" name="lp-sort" value="pollutant" checked />
+          By pollutant
+        </label>
+        <label class="lp-row">
+          <input type="radio" name="lp-sort" value="category" />
+          By category
+        </label>
       </section>
 
-      <section class="panel">
-        <h2>Legend</h2>
-        <div id="legend">
-          <p class="hint">Enable a layer to see its legend.</p>
-        </div>
-      </section>
-    </aside>
-
-    <!-- MAP -->
-    <main class="map-wrap">
-      <div id="map" class="map"></div>
-      <div id="mouse-position" class="mouse-position"></div>
-    </main>
+      <div id="layer-switcher"></div>
+    </div>
   </div>
 
   <!-- OpenLayers v7 library -->
